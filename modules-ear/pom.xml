@@ -11,6 +11,21 @@
 
     <artifactId>modules-ear</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>ear</packaging>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.epam.adk.group</groupId>
+            <artifactId>ejb-project</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.epam.adk.group</groupId>
+            <artifactId>web-project</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+    </dependencies>
 
 </project>
