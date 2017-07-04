@@ -23,18 +23,21 @@ public class Servlet extends HttpServlet {
     private MessageDao messageDao;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("In the Servlet doPost() method: ");
 
+        Message message = new Message();
+        message.setText(request.getParameter("message"));
+        messageDao.submit(message);
+
+        System.out.println(message.getText());
+        System.out.println("ID: " + message.getId());
+
+        request.setAttribute("message", message.getText());
+
+        request.getRequestDispatcher("/WEB-INF/welcome.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("In the Servlet doGet() method: ");
-
-        Message message = new Message();
-        message.setText("Hello World!");
-
-        Message msg = messageDao.submit(message);
-        System.out.println("ID: " + msg.getId());
-
-        request.getRequestDispatcher("/WEB-INF/welcome.jsp").forward(request, response);
     }
 }
